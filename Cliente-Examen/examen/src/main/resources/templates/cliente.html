@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sistema de Clientes</title>
+</head>
+<body>
+
+
+<h1>Clientes Registrados</h1>
+
+<a th:href="@{/cliente/create}" class="button">Crear Nuevo Cliente</a>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Edad</th>
+            <th>Celular</th>
+            <th>Emails</th>
+        </tr>
+    </thead>
+    <tr th:each="cliente : ${clientes}">
+        <td th:text="${cliente.CLI_id}"></td>
+        <td th:text="${cliente.CLI_nombre}"></td>
+        <td th:text="${cliente.CLI_direccion}"></td>
+        <td th:text="${cliente.CLI_edad}"></td>
+        <td th:text="${cliente.CLI_celular}"></td>
+        <td th:text="${cliente.CLI_email}"></td>
+        <td>
+            <!-- Botón Editar -->
+            <a th:href="@{'/cliente/update/' + ${cliente.CLI_id}}" class="button">Editar</a>
+            
+            <!-- Formulario para enviar solicitud de eliminación -->
+            <form th:action="@{'/cliente/delete/' + ${cliente.CLI_id}}" method="post" style="display: inline;">
+                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Actualizar Cliente</title>
+</head>
+<body>
+
+<h1>Actualizar Cliente</h1>
+
+<form th:object="${cliente}" th:action="@{'/cliente/update/' + ${cliente.CLI_id}}" th:method="post">
+    <!-- Campos del formulario -->
+    <input type="hidden" th:field="*{CLI_id}"/>
+    
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" th:field="*{CLI_nombre}" required/>
+    
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" th:field="*{CLI_apellido}" required/>
+
+    <label for="direccion">Dirección:</label>
+    <input type="text" id="direccion" name="direccion" th:field="*{CLI_direccion}" required/>
+
+    <label for="edad">Edad:</label>
+    <input type="text" id="edad" name="edad" th:field="*{CLI_edad}" required/>
+
+    <label for="celular">Celular:</label>
+    <input type="text" id="celular" name="celular" th:field="*{CLI_celular}" required/>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" th:field="*{CLI_email}" required/>
+    
+    <button type="submit">Actualizar Cliente</button>
+
+</form>
+
+</body>
+</html>
